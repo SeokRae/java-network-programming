@@ -1,3 +1,4 @@
 rootProject.name = 'java-network-programming'
 include '_01_network-basic'
+include '_02_network_stream'
 
