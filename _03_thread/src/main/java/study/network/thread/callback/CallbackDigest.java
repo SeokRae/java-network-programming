@@ -1,4 +1,4 @@
-package study.network.thread;
+package study.network.thread.callback;
 
 import java.io.*;
 import java.security.*;

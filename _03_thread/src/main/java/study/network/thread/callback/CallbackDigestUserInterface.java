@@ -1,4 +1,4 @@
-package study.network.thread;
+package study.network.thread.callback;
 
 import javax.xml.bind.*; // for DatatypeConverter; requires Java 6 or JAXB 1.0
 
