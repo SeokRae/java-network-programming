@@ -4,6 +4,8 @@ import com.example.utils.HttpRequestUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.util.Map;
 
@@ -29,7 +31,14 @@ class RequestHandlerTest {
 					, () -> assertThat(queryStringMap).containsEntry("name", "seokrae")
 					, () -> assertThat(queryStringMap).containsEntry("email", "seokrae@gmail.com")
 			);
-			;
+		}
+		
+		@DisplayName("쿼리 스트링 존재하지 않는 값")
+		@NullAndEmptySource
+		@ParameterizedTest(name = "QueryString 빈 값:{0} 체크")
+		void testCase2(String empty) {
+			Map<String, String> queryStringMap = HttpRequestUtils.parseQueryString(empty);
+			assertThat(queryStringMap).isEmpty();
 		}
 	}
 }
