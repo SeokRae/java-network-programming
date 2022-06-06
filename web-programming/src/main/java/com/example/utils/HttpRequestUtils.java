@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public final class HttpRequestUtils {
 	
+	private HttpRequestUtils() {}
 	public static Map<String, String> parseQueryString(String queryString) {
 		if(Strings.isNullOrEmpty(queryString)) {
 			return Maps.newHashMap();
@@ -21,7 +22,11 @@ public final class HttpRequestUtils {
 				.collect(Collectors.toMap(Pair::getKey, Pair::getValue));
 	}
 	
-	private static Pair parsePair(String keyValue, String regex) {
+	public static Pair parseHeader(String header) {
+		return parsePair(header, ": ");
+	}
+	
+	static Pair parsePair(String keyValue, String regex) {
 		if(Strings.isNullOrEmpty(regex)) {
 			return null;
 		}
@@ -33,7 +38,6 @@ public final class HttpRequestUtils {
 		
 		return new Pair(tokens[0], tokens[1]);
 	}
-	
 	
 	static class Pair {
 		private final String key;
